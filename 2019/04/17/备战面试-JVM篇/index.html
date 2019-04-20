@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="备战面试,JAVA,JVM,">
+  <meta name="keywords" content="JAVA,备战面试,JVM,">
 
 
 
@@ -89,7 +89,7 @@
 
 
 <meta name="description" content="谈谈你对Java的理解 平台无关性 GC 语言特性(泛型、反射、Lamba表达式) 面向对象 类库 异常处理   Compile Once，Run Anywhere如何实现  Java源码首先被编译成字节码，再由不同平台的JVM进行解析，Java语言在不同平台上运行时不需要进行重新编译，Java虚拟机在执行字节码的时候，把字节码转换成具体平台上的机器指令。  为什么JVM不直接将源码解析成机器码去">
-<meta name="keywords" content="备战面试,JAVA,JVM">
+<meta name="keywords" content="JAVA,备战面试,JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="备战面试-JVM篇">
 <meta property="og:url" content="http://yoursite.com/2019/04/17/备战面试-JVM篇/index.html">
@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/备战面试-JVM篇/JAVA虚拟机栈.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/备战面试-JVM篇/执行add.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/备战面试-JVM篇/堆和栈的区别.png">
-<meta property="og:updated_time" content="2019-04-17T13:30:15.089Z">
+<meta property="og:updated_time" content="2019-04-18T08:13:49.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="备战面试-JVM篇">
 <meta name="twitter:description" content="谈谈你对Java的理解 平台无关性 GC 语言特性(泛型、反射、Lamba表达式) 面向对象 类库 异常处理   Compile Once，Run Anywhere如何实现  Java源码首先被编译成字节码，再由不同平台的JVM进行解析，Java语言在不同平台上运行时不需要进行重新编译，Java虚拟机在执行字节码的时候，把字节码转换成具体平台上的机器指令。  为什么JVM不直接将源码解析成机器码去">
@@ -525,6 +525,13 @@
 <li>联系：引用对象、数组时，栈里定义变量保存堆中目标的首地址</li>
 </ul>
 <p><img src="/2019/04/17/备战面试-JVM篇/堆和栈的区别.png" alt="堆和栈的区别"></p>
+<ul>
+<li>管理方式：栈自动释放，堆需要GC</li>
+<li>空间大小：栈比堆小</li>
+<li>碎片相关：栈产生的碎片远小于堆</li>
+<li>分配方式：栈支持静态和动态分配，而堆仅支持动态分配</li>
+<li>效率：栈的效率比堆高</li>
+</ul>
 
       
     </div>
@@ -542,9 +549,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/备战面试/" rel="tag"><i class="fa fa-tag"></i> 备战面试</a>
-          
             <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
+          
+            <a href="/tags/备战面试/" rel="tag"><i class="fa fa-tag"></i> 备战面试</a>
           
             <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
           
@@ -651,7 +658,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -662,7 +669,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -673,7 +680,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
