@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="SpringDataJpa,JAVA,Spring,sequence,数据库,">
+  <meta name="keywords" content="SpringDataJpa,JAVA,Spring,sequence,分布式,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="是根据分布式高效ID生产黑科技(sequence)的算法实现的 首先将该项目中的两个关键文件复制进自己的项目 Sequence.java SystemClock.java">
-<meta name="keywords" content="SpringDataJpa,JAVA,Spring,sequence,数据库">
+<meta name="description" content="是根据分布式高效ID生产黑科技(sequence)的算法实现的 首先将该项目中的两个关键文件复制进自己的项目 Sequence.java SystemClock.java 然后新建一个SnowflakeIdentifierGenerator类 12345678910111213141516171819202122232425public class SnowflakeIdentifierGener">
+<meta name="keywords" content="SpringDataJpa,JAVA,Spring,sequence,分布式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringDataJpa-自动生成分布式高效主键ID">
 <meta property="og:url" content="http://yoursite.com/2019/04/20/SpringDataJpa-自动生成分布式高效主键ID/index.html">
 <meta property="og:site_name" content="编程太有趣惹">
-<meta property="og:description" content="是根据分布式高效ID生产黑科技(sequence)的算法实现的 首先将该项目中的两个关键文件复制进自己的项目 Sequence.java SystemClock.java">
+<meta property="og:description" content="是根据分布式高效ID生产黑科技(sequence)的算法实现的 首先将该项目中的两个关键文件复制进自己的项目 Sequence.java SystemClock.java 然后新建一个SnowflakeIdentifierGenerator类 12345678910111213141516171819202122232425public class SnowflakeIdentifierGener">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-20T14:50:07.776Z">
+<meta property="og:updated_time" content="2019-04-21T01:23:07.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringDataJpa-自动生成分布式高效主键ID">
-<meta name="twitter:description" content="是根据分布式高效ID生产黑科技(sequence)的算法实现的 首先将该项目中的两个关键文件复制进自己的项目 Sequence.java SystemClock.java">
+<meta name="twitter:description" content="是根据分布式高效ID生产黑科技(sequence)的算法实现的 首先将该项目中的两个关键文件复制进自己的项目 Sequence.java SystemClock.java 然后新建一个SnowflakeIdentifierGenerator类 12345678910111213141516171819202122232425public class SnowflakeIdentifierGener">
 
 
 
@@ -397,6 +397,13 @@
 <p>首先将该项目中的两个关键文件复制进自己的项目</p>
 <p><a href="https://gitee.com/yu120/sequence/blob/master/src/main/java/cn/ms/sequence/Sequence.java" target="_blank" rel="noopener">Sequence.java</a></p>
 <p><a href="https://gitee.com/yu120/sequence/blob/master/src/main/java/cn/ms/sequence/SystemClock.java" target="_blank" rel="noopener">SystemClock.java</a></p>
+<p>然后新建一个SnowflakeIdentifierGenerator类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SnowflakeIdentifierGenerator</span> <span class="keyword">implements</span> <span class="title">IdentifierGenerator</span>, <span class="title">Configurable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Sequence sequence;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(Type type, Properties params, ServiceRegistry serviceRegistry)</span> <span class="keyword">throws</span> MappingException </span>&#123;</span><br><span class="line">        ConfigurationService configurationService = serviceRegistry.getService(ConfigurationService.class);</span><br><span class="line">        <span class="keyword">long</span> workerId = Long.parseLong(configurationService.getSetting(</span><br><span class="line">                <span class="string">"hibernate.custom.workerId"</span>,</span><br><span class="line">                String.class,</span><br><span class="line">                <span class="string">"-1"</span></span><br><span class="line">        ));</span><br><span class="line">        <span class="keyword">long</span> datacenterId = Long.parseLong(configurationService.getSetting(</span><br><span class="line">                <span class="string">"hibernate.custom.datacenterId"</span>,</span><br><span class="line">                String.class,</span><br><span class="line">                <span class="string">"-1"</span></span><br><span class="line">        ));</span><br><span class="line">        sequence = <span class="keyword">new</span> Sequence(workerId, datacenterId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Serializable <span class="title">generate</span><span class="params">(SharedSessionContractImplementor session, Object object)</span> <span class="keyword">throws</span> HibernateException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(sequence.nextId());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们这里的workerId和datacenterId采用配置文件读取的方式进行读取，在application.yml中加入如下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  jpa:</span></span><br><span class="line"><span class="attr">    properties:</span></span><br><span class="line"><span class="attr">      hibernate:</span></span><br><span class="line"><span class="attr">        custom:</span></span><br><span class="line"><span class="attr">          workerId:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">          datacenterId:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>最后新建一个AbstractBaseEntity作为实体类的统一父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MappedSuperclass</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractBaseEntity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(generator = <span class="string">"snowflakeIdentifierGenerator"</span>)</span><br><span class="line">    <span class="meta">@GenericGenerator</span>(</span><br><span class="line">            name = <span class="string">"snowflakeIdentifierGenerator"</span>,</span><br><span class="line">            strategy = <span class="string">"SnowflakeIdentifierGenerator的完整路径(包名.类名)"</span></span><br><span class="line">    )</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"id"</span>, length = <span class="number">32</span>)</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成之后，所有的实体类只需要继承于该类，就可以自动生成ID了，在不同的微服务中，可以使用不同的workerId和datacenterId，从而实现分布式高效主键ID</p>
 
       
     </div>
@@ -422,7 +429,7 @@
           
             <a href="/tags/sequence/" rel="tag"><i class="fa fa-tag"></i> sequence</a>
           
-            <a href="/tags/数据库/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+            <a href="/tags/分布式/" rel="tag"><i class="fa fa-tag"></i> 分布式</a>
           
         </div>
       
@@ -435,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/20/重学SpringSecurity5 第三节：自定义用户认证/" rel="next" title="重学SpringSecurity5 第三节：自定义用户认证">
-                <i class="fa fa-chevron-left"></i> 重学SpringSecurity5 第三节：自定义用户认证
+              <a href="/2019/04/20/重学SpringSecurity5-第三节：自定义用户认证/" rel="next" title="重学SpringSecurity5（三）：自定义用户认证">
+                <i class="fa fa-chevron-left"></i> 重学SpringSecurity5（三）：自定义用户认证
               </a>
             
           </div>
