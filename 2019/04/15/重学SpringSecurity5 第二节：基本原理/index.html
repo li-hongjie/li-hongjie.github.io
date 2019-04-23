@@ -88,21 +88,21 @@
 
 
 
-<meta name="description" content="上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理 SpringSecurity基本原理首先回想一下我们最早学习java web的时候，是怎么做登录认证的。   首先制作登录页面(login.html)和登录认证endpoint(Log">
+<meta name="description" content="上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理 SpringSecurity基本原理在上一节完成的默认认证中，我们访问http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080">
 <meta name="keywords" content="JAVA,Spring,SpringSecurity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重学SpringSecurity5（二）：基本原理">
 <meta property="og:url" content="http://yoursite.com/2019/04/15/重学SpringSecurity5 第二节：基本原理/index.html">
 <meta property="og:site_name" content="编程太有趣惹">
-<meta property="og:description" content="上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理 SpringSecurity基本原理首先回想一下我们最早学习java web的时候，是怎么做登录认证的。   首先制作登录页面(login.html)和登录认证endpoint(Log">
+<meta property="og:description" content="上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理 SpringSecurity基本原理在上一节完成的默认认证中，我们访问http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/15/重学SpringSecurity5%20第二节：基本原理/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/15/重学SpringSecurity5%20第二节：基本原理/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/15/重学SpringSecurity5%20第二节：基本原理/3.png">
-<meta property="og:updated_time" content="2019-04-23T08:45:15.587Z">
+<meta property="og:updated_time" content="2019-04-23T08:59:08.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重学SpringSecurity5（二）：基本原理">
-<meta name="twitter:description" content="上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理 SpringSecurity基本原理首先回想一下我们最早学习java web的时候，是怎么做登录认证的。   首先制作登录页面(login.html)和登录认证endpoint(Log">
+<meta name="twitter:description" content="上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理 SpringSecurity基本原理在上一节完成的默认认证中，我们访问http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/15/重学SpringSecurity5%20第二节：基本原理/1.png">
 
 
@@ -398,30 +398,7 @@
 
       
         <p>上一节我们搭建了SpringSecurity的基础环境，并且使用SpringSecurity的默认认证方式完成了认证，这一节主要针对SpringSecuirty的默认配置来说明一下SpringSecurity的原理</p>
-<h1 id="SpringSecurity基本原理"><a href="#SpringSecurity基本原理" class="headerlink" title="SpringSecurity基本原理"></a>SpringSecurity基本原理</h1><p>首先回想一下我们最早学习java web的时候，是怎么做登录认证的。</p>
-<blockquote>
-<ol>
-<li>首先制作登录页面(login.html)和登录认证endpoint(LoginController)</li>
-<li>填写用户名、密码后Post提交表单给LoginController进行认证</li>
-<li>java后台编写UserService、UserDao，根据用户名、密码搜索数据库判断用户信息。如果符合条件，则将用户信息存入session，并设置cookie存储jsessionid，失效时间为半小时，跳转到主页；如果不符合条件重新定位到login.html</li>
-<li>用户登录成功后，带着cookie横行无阻，因为自定义过滤器UserFilter判断session中是否有用户信息，有就放行。</li>
-<li>用户执行注销操作，java后台清除session和cookie，并跳转到登录页面。</li>
-</ol>
-</blockquote>
-<p>Spring Security其实就是帮我们封装了一些类，简化了我们的代码。如果按照Spring Security的思路来做登录认证，应该是下面这样</p>
-<blockquote>
-<ol>
-<li>用户编写WebSecurityConfigurerApdater的继承类，配置HttpSecurity，包括formLogin，antMatcher，hasRole等等。</li>
-<li>项目启动自动装配FilterChain，访问不同uri对应不同的Filter Chain。</li>
-<li>用户输入账号、密码点击登录，FilterChainProxy中的UsernamePasswordAuthenticationFilter获取request中的用户名、密码，验证身份信息</li>
-<li>doFilter()过程中会执行ProviderManager.authenticate()，即遍历所有AuthenticationProvider执行authenticate()方法。</li>
-<li>authenticate()方法中会调用userDetailService，用户自定义类继承UserDetailService，并重写其中的方法loadUserByUsername()，从数据库中获取用户信息进行比对</li>
-<li>比对成功后将用户信息和角色信息整合成Authentication，并存入SecurityContext中，同时将SecurityContext也存入session中，跳转到主页面。</li>
-<li>比对失败，SecurityContext中没有Authentication，FilterChain进行到最后一步FilterSecurityInterceptor，判断用户角色是否能访问request中的访问地址即资源。如果不行则报错跳转到指定页面；如果成功则进入request调用的资源。</li>
-<li>注销操作由LogoutFilter执行，执行session.invalidate()和SecurityContextHolder.clearContext()。</li>
-</ol>
-</blockquote>
-<p>在上一节完成的默认认证中，我们访问<a href="http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080/login" target="_blank" rel="noopener">http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080/login</a></p>
+<h1 id="SpringSecurity基本原理"><a href="#SpringSecurity基本原理" class="headerlink" title="SpringSecurity基本原理"></a>SpringSecurity基本原理</h1><p>在上一节完成的默认认证中，我们访问<a href="http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080/login" target="_blank" rel="noopener">http://localhost:8080/hello，浏览器自动跳转至http://localhost:8080/login</a></p>
 <p>实际上，在SpringSecurity中，最核心的部分就是SpringSecurity过滤器链，实际上就是一组过滤器</p>
 <p>我们的所有请求和响应都会通过SpringSecurity的过滤器，这些过滤器，在项目启动时，Springboot会自动将他们加入</p>
 <p>接下来我们依次看一下几个比较核心的过滤器</p>
@@ -571,7 +548,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

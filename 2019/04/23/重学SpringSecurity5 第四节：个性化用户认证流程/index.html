@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="面试,Redis,">
+  <meta name="keywords" content="JAVA,Spring,SpringSecurity,">
 
 
 
@@ -88,22 +88,20 @@
 
 
 
-<meta name="description" content="Redis简介主流应用架构(缓存层) 缓存中间件——Memcache和Redis的区别Memcache：代码层次类似Hash 支持简单数据类型 不支持数据持久化存储 不支持主从 不支持分片  Redis 数据类型丰富 支持数据磁盘持久化存储 支持主从 支持分片  为什么Redis能这么快100000+QPS(QPS即query per second，每秒内查询次数)  完全基于内存，绝大部分请求是">
-<meta name="keywords" content="面试,Redis">
+<meta name="description" content="实现个性化登录页面在WebSecurityConfig中修改如下配置 1234567891011121314@Overrideprotected void configure(HttpSecurity http) throws Exception &amp;#123;    http.formLogin()        .loginPage(&quot;/mylogin.html&quot;) //设置登录页面路径">
+<meta name="keywords" content="JAVA,Spring,SpringSecurity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="备战面试-Redis篇">
-<meta property="og:url" content="http://yoursite.com/2019/04/22/备战面试-Redis篇/index.html">
+<meta property="og:title" content="重学SpringSecurity5（四）：个性化用户认证流程">
+<meta property="og:url" content="http://yoursite.com/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/index.html">
 <meta property="og:site_name" content="编程太有趣惹">
-<meta property="og:description" content="Redis简介主流应用架构(缓存层) 缓存中间件——Memcache和Redis的区别Memcache：代码层次类似Hash 支持简单数据类型 不支持数据持久化存储 不支持主从 不支持分片  Redis 数据类型丰富 支持数据磁盘持久化存储 支持主从 支持分片  为什么Redis能这么快100000+QPS(QPS即query per second，每秒内查询次数)  完全基于内存，绝大部分请求是">
+<meta property="og:description" content="实现个性化登录页面在WebSecurityConfig中修改如下配置 1234567891011121314@Overrideprotected void configure(HttpSecurity http) throws Exception &amp;#123;    http.formLogin()        .loginPage(&quot;/mylogin.html&quot;) //设置登录页面路径">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/04/22/备战面试-Redis篇/主流应用架构.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/22/备战面试-Redis篇/传统的阻塞IO模型.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/22/备战面试-Redis篇/Select系统调用.png">
-<meta property="og:updated_time" content="2019-04-22T14:22:18.169Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/23/重学SpringSecurity5%20第四节：个性化用户认证流程/处理不同类型的请求.png">
+<meta property="og:updated_time" content="2019-04-23T12:44:20.721Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="备战面试-Redis篇">
-<meta name="twitter:description" content="Redis简介主流应用架构(缓存层) 缓存中间件——Memcache和Redis的区别Memcache：代码层次类似Hash 支持简单数据类型 不支持数据持久化存储 不支持主从 不支持分片  Redis 数据类型丰富 支持数据磁盘持久化存储 支持主从 支持分片  为什么Redis能这么快100000+QPS(QPS即query per second，每秒内查询次数)  完全基于内存，绝大部分请求是">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/22/备战面试-Redis篇/主流应用架构.png">
+<meta name="twitter:title" content="重学SpringSecurity5（四）：个性化用户认证流程">
+<meta name="twitter:description" content="实现个性化登录页面在WebSecurityConfig中修改如下配置 1234567891011121314@Overrideprotected void configure(HttpSecurity http) throws Exception &amp;#123;    http.formLogin()        .loginPage(&quot;/mylogin.html&quot;) //设置登录页面路径">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/23/重学SpringSecurity5%20第四节：个性化用户认证流程/处理不同类型的请求.png">
 
 
 
@@ -133,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/22/备战面试-Redis篇/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/">
 
 
 
 
 
-  <title>备战面试-Redis篇 | 编程太有趣惹</title>
+  <title>重学SpringSecurity5（四）：个性化用户认证流程 | 编程太有趣惹</title>
   
 
 
@@ -298,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/备战面试-Redis篇/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiHongjie">
@@ -315,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">备战面试-Redis篇</h1>
+          <h1 class="post-title" itemprop="name headline">重学SpringSecurity5（四）：个性化用户认证流程</h1>
         
 
         <div class="post-meta">
@@ -327,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T15:57:34+08:00">
-                2019-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-23T18:41:57+08:00">
+                2019-04-23
               </time>
             
 
@@ -350,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/备战面试/" itemprop="url" rel="index">
-                    <span itemprop="name">备战面试</span>
+                  <a href="/categories/重学SpringSecurity5/" itemprop="url" rel="index">
+                    <span itemprop="name">重学SpringSecurity5</span>
                   </a>
                 </span>
 
@@ -368,8 +366,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/22/备战面试-Redis篇/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/22/备战面试-Redis篇/" itemprop="commentCount"></span>
+                <a href="/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,107 +395,25 @@
       
 
       
-        <h1 id="Redis简介"><a href="#Redis简介" class="headerlink" title="Redis简介"></a>Redis简介</h1><h2 id="主流应用架构-缓存层"><a href="#主流应用架构-缓存层" class="headerlink" title="主流应用架构(缓存层)"></a>主流应用架构(缓存层)</h2><p><img src="/2019/04/22/备战面试-Redis篇/主流应用架构.png" alt="主流应用架构"></p>
-<h2 id="缓存中间件——Memcache和Redis的区别"><a href="#缓存中间件——Memcache和Redis的区别" class="headerlink" title="缓存中间件——Memcache和Redis的区别"></a>缓存中间件——Memcache和Redis的区别</h2><h3 id="Memcache：代码层次类似Hash"><a href="#Memcache：代码层次类似Hash" class="headerlink" title="Memcache：代码层次类似Hash"></a>Memcache：代码层次类似Hash</h3><ul>
-<li>支持简单数据类型</li>
-<li>不支持数据持久化存储</li>
-<li>不支持主从</li>
-<li>不支持分片</li>
-</ul>
-<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><ul>
-<li>数据类型丰富</li>
-<li>支持数据磁盘持久化存储</li>
-<li>支持主从</li>
-<li>支持分片</li>
-</ul>
-<h2 id="为什么Redis能这么快"><a href="#为什么Redis能这么快" class="headerlink" title="为什么Redis能这么快"></a>为什么Redis能这么快</h2><p><strong>100000+QPS(QPS即query per second，每秒内查询次数)</strong></p>
-<ul>
-<li>完全基于内存，绝大部分请求是纯粹的内存操作，执行效率高</li>
-<li>数据结构简单，对数据操作也简单</li>
-<li>采用单线程，单线程也能处理高并发请求，想多核也可以启动多实例</li>
-<li>使用多路I/O复用模型，非阻塞IO</li>
-</ul>
-<h2 id="多路I-O复用模型"><a href="#多路I-O复用模型" class="headerlink" title="多路I/O复用模型"></a>多路I/O复用模型</h2><h3 id="FD：File-Descriptor，文件描述符"><a href="#FD：File-Descriptor，文件描述符" class="headerlink" title="FD：File Descriptor，文件描述符"></a>FD：File Descriptor，文件描述符</h3><p>一个打开的文件通过唯一的描述符进行引用，该描述符是打开文件的元数据到文件本身的映射</p>
-<h3 id="传统的阻塞I-O模型"><a href="#传统的阻塞I-O模型" class="headerlink" title="传统的阻塞I/O模型"></a>传统的阻塞I/O模型</h3><p><img src="/2019/04/22/备战面试-Redis篇/传统的阻塞IO模型.png" alt="传统的阻塞IO模型"></p>
-<h3 id="Select系统调用"><a href="#Select系统调用" class="headerlink" title="Select系统调用"></a>Select系统调用</h3><p><img src="/2019/04/22/备战面试-Redis篇/Select系统调用.png" alt="Select系统调用"></p>
-<h3 id="Redis采用的I-O多路复用函数"><a href="#Redis采用的I-O多路复用函数" class="headerlink" title="Redis采用的I/O多路复用函数"></a>Redis采用的I/O多路复用函数</h3><p><strong>epoll/kqueue/evport/select？</strong></p>
-<ul>
-<li>因地制宜</li>
-<li>优先选择时间复杂度为O(1)的I/O多路复用函数作为底层实现</li>
-<li>以时间复杂度为O(n)的select作为保底</li>
-<li>基于react设计模式监听I/O事件</li>
-</ul>
-<h1 id="Redis常用数据类型"><a href="#Redis常用数据类型" class="headerlink" title="Redis常用数据类型"></a>Redis常用数据类型</h1><h2 id="供用户使用的数据类型"><a href="#供用户使用的数据类型" class="headerlink" title="供用户使用的数据类型"></a>供用户使用的数据类型</h2><ul>
-<li>String：最基本的数据类型，二进制安全（最大能存储512M）</li>
-<li>Hash：String元素组成的字典，适合用于存储对象</li>
-<li>List：列表，按照String元素插入顺序排序</li>
-<li>Set：String元素组成的无序集合，通过哈希表实现，不允许重复</li>
-<li>Sorted Set：通过分数来为集合中的成员进行从小到大的排序</li>
-<li>用于计数的HyperLogLog，用于支持存储地理位置信息的Geo</li>
-</ul>
-<h2 id="底层数据类型基础"><a href="#底层数据类型基础" class="headerlink" title="底层数据类型基础"></a>底层数据类型基础</h2><ul>
-<li>简单动态字符串</li>
-<li>链表</li>
-<li>字典</li>
-<li>跳跃表</li>
-<li>整数集合</li>
-<li>压缩列表</li>
-<li>对象</li>
-</ul>
-<h1 id="从海量key里查询出某一固定前缀的key"><a href="#从海量key里查询出某一固定前缀的key" class="headerlink" title="从海量key里查询出某一固定前缀的key"></a>从海量key里查询出某一固定前缀的key</h1><h2 id="留意细节"><a href="#留意细节" class="headerlink" title="留意细节"></a>留意细节</h2><ul>
-<li>摸清数据规模，即问清楚边界</li>
-</ul>
-<h2 id="批量生成redis测试数据"><a href="#批量生成redis测试数据" class="headerlink" title="批量生成redis测试数据"></a>批量生成redis测试数据</h2><p><strong>1.</strong>linux bash下执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>((i=1;i&lt;=20000000;i++));<span class="keyword">do</span> <span class="built_in">echo</span> <span class="string">"set k<span class="variable">$i</span> v<span class="variable">$i</span>"</span> &gt;&gt; /tmp/redisTest.txt</span><br></pre></td></tr></table></figure>
-<p>生成2千万条redis批量设置kv的语句(key=kn,value=vn)写入到/tmp目录下的redisTest.txt文件中</p>
-<p><strong>2.</strong>用vim去掉行尾的^M符号，使用方式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /tmp/redisTest.txt</span><br><span class="line">:<span class="built_in">set</span> fileformat=dos <span class="comment">#设置文件的格式，通过这句话去掉每行结尾的^M符号</span></span><br><span class="line">:wq <span class="comment">#保存退出</span></span><br></pre></td></tr></table></figure>
-<p><strong>3.</strong>通过redis提供的管道–pipe形式，去跑redis，传入文件的指令批量灌数据，需要花费一段时间</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /tmp/redisTest.txt | 路径/redis-5.0.0/src/redis-cli -h 主机ip -p 端口号 --pipe</span><br></pre></td></tr></table></figure>
-<h2 id="KEYS-pattern"><a href="#KEYS-pattern" class="headerlink" title="KEYS pattern"></a>KEYS pattern</h2><p><strong>查找所有符合给定模式pattern的key</strong></p>
-<ul>
-<li>KEYS指令一次性返回所有匹配的key</li>
-<li>键的数量过大会使服务卡顿</li>
-</ul>
-<h2 id="SCAN-cursor-MATCH-pattern-COUNT-count"><a href="#SCAN-cursor-MATCH-pattern-COUNT-count" class="headerlink" title="SCAN cursor [MATCH pattern] [COUNT count]"></a>SCAN cursor [MATCH pattern] [COUNT count]</h2><ul>
-<li>基于游标的迭代器，需要基于上一次的游标延续之前的迭代过程</li>
-<li>以0作为游标开始一次新的迭代，直到命令返回游标0完成一次遍历</li>
-<li>不保证每次执行都返回某个给定数量的元素，支持模糊查询</li>
-<li>一次返回的数量不可控，只能是大概率符合count参数</li>
-</ul>
-<h1 id="如何通过Redis实现分布式锁"><a href="#如何通过Redis实现分布式锁" class="headerlink" title="如何通过Redis实现分布式锁"></a>如何通过Redis实现分布式锁</h1><h2 id="分布式锁需要解决的问题"><a href="#分布式锁需要解决的问题" class="headerlink" title="分布式锁需要解决的问题"></a>分布式锁需要解决的问题</h2><ul>
-<li>互斥性</li>
-<li>安全性</li>
-<li>死锁</li>
-<li>容错</li>
-</ul>
-<h2 id="如何通过Redis实现"><a href="#如何通过Redis实现" class="headerlink" title="如何通过Redis实现"></a>如何通过Redis实现</h2><h3 id="SETNX-key-value"><a href="#SETNX-key-value" class="headerlink" title="SETNX key value"></a>SETNX key value</h3><p><strong>如果key不存在，则创建并赋值</strong></p>
-<ul>
-<li>时间复杂度：O(1)</li>
-<li>返回值：设置成功，返回1；设置失败，返回0</li>
-</ul>
-<h3 id="如何解决SETNX长期有效的问题"><a href="#如何解决SETNX长期有效的问题" class="headerlink" title="如何解决SETNX长期有效的问题"></a>如何解决SETNX长期有效的问题</h3><h4 id="EXPIRE-key-seconds（错误的解法）"><a href="#EXPIRE-key-seconds（错误的解法）" class="headerlink" title="EXPIRE key seconds（错误的解法）"></a>EXPIRE key seconds（错误的解法）</h4><ul>
-<li>设置key的生存时间，当key过期时(生存时间为0)，会被自动删除</li>
-<li>缺点：原子性得不到满足</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">RedisService redisService = SpringUtils.getBean(RedisService.class);</span><br><span class="line"><span class="keyword">long</span> status = redisService.setnx(key, <span class="string">"1"</span>);</span><br><span class="line"><span class="keyword">if</span>(status == <span class="number">1</span>) &#123;</span><br><span class="line">    redisService.expire(key, expire);</span><br><span class="line">    <span class="comment">//执行独占资源逻辑</span></span><br><span class="line">    doOcuppiedWork()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="SET-key-value-EX-seconds-PX-milliseconds-NX-XX"><a href="#SET-key-value-EX-seconds-PX-milliseconds-NX-XX" class="headerlink" title="SET key value [EX seconds] [PX milliseconds] [NX|XX]"></a>SET key value [EX seconds] [PX milliseconds] [NX|XX]</h4><ul>
-<li>EX second：设置键的过期时间为second秒</li>
-<li>PX millisecond：设置键的过期时间为millisecond毫秒</li>
-<li>NX：只在键不存在时，才对键进行设置操作</li>
-<li>XX：只在键已经存在时，才对键进行设置操作</li>
-<li>SET操作成功完成时，返回OK，否则返回nil</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RedisService redisService = SpringUtils.getBean(RedisService.class);</span><br><span class="line">String result = redisService.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);</span><br><span class="line"><span class="keyword">if</span>(<span class="string">"ok"</span>.equals(result)) &#123;</span><br><span class="line">    <span class="comment">//执行独占资源逻辑</span></span><br><span class="line">    doOcuppiedWork()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="大量的key同时过期的注意事项"><a href="#大量的key同时过期的注意事项" class="headerlink" title="大量的key同时过期的注意事项"></a>大量的key同时过期的注意事项</h3><p>集中过期，由于清除大量的key很耗时，会出现短暂的卡顿现象</p>
-<ul>
-<li>解决方案：在设置key的过期时间的时候，给每个key加上随机值</li>
-</ul>
-<h1 id="如何使用Redis做异步队列"><a href="#如何使用Redis做异步队列" class="headerlink" title="如何使用Redis做异步队列"></a>如何使用Redis做异步队列</h1><p>使用List作为队列，RPUSH生产消息，LPOP消费消息</p>
-<ul>
-<li>缺点：没有等待队列里有值就直接消费</li>
-<li>弥补：可以通过在应用层引入Sleep机制去调用LPOP重试</li>
-</ul>
+        <h1 id="实现个性化登录页面"><a href="#实现个性化登录页面" class="headerlink" title="实现个性化登录页面"></a>实现个性化登录页面</h1><p>在WebSecurityConfig中修改如下配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    http.formLogin()</span><br><span class="line">        .loginPage(<span class="string">"/mylogin.html"</span>) <span class="comment">//设置登录页面路径</span></span><br><span class="line">        .loginProcessingUrl(<span class="string">"/authentication/form"</span>) <span class="comment">//设置认证路径</span></span><br><span class="line">        .and()</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">        .antMatchers(<span class="string">"/mylogin.html"</span>).permitAll()  <span class="comment">//放行/mylogin.html访问</span></span><br><span class="line">        .anyRequest().authenticated()</span><br><span class="line">        .and()</span><br><span class="line">        .csrf().disable();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在resources目录下新建resources/mylogin.html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>我的个性化登录页面<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"/authentication/form"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>用户名：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"username"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span>密码：<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>/&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"登录"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="处理不同类型的请求"><a href="#处理不同类型的请求" class="headerlink" title="处理不同类型的请求"></a>处理不同类型的请求</h1><h2 id="功能流程图"><a href="#功能流程图" class="headerlink" title="功能流程图"></a>功能流程图</h2><p><img src="/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/处理不同类型的请求.png" alt></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>BrowserSecurityController.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BrowserSecurityController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(BrowserSecurityController.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RequestCache requestCache = <span class="keyword">new</span> HttpSessionRequestCache();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RedirectStrategy redirectStrategy = <span class="keyword">new</span> DefaultRedirectStrategy();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/authentication/require"</span>)</span><br><span class="line">    <span class="meta">@ResponseStatus</span>(code = HttpStatus.UNAUTHORIZED)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> SimpleResponse <span class="title">requireAuthentication</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">//获取springsecurity缓存的request</span></span><br><span class="line">        SavedRequest savedRequest = requestCache.getRequest(request, response);</span><br><span class="line">        <span class="keyword">if</span> (savedRequest != <span class="keyword">null</span>) &#123;</span><br><span class="line">            String target = savedRequest.getRedirectUrl();</span><br><span class="line">            logger.info(<span class="string">"引发跳转的请求是：&#123;&#125;"</span>, target);</span><br><span class="line">            <span class="comment">//判断用户访问的路径是否以.html结尾</span></span><br><span class="line">            <span class="keyword">if</span>(StringUtils.endsWithIgnoreCase(target, <span class="string">".html"</span>)) &#123;</span><br><span class="line">                <span class="comment">//重定向到登录页面</span></span><br><span class="line">                redirectStrategy.sendRedirect(request, response, <span class="string">"/mylogin.html"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回JSON</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SimpleResponse(<span class="string">"访问的服务需要身份认证"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>SimpleResponse.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleResponse</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleResponse</span><span class="params">(Object content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Object content;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContent</span><span class="params">(Object content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>WebSecurityConfig.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    http.formLogin()</span><br><span class="line">        .loginPage(<span class="string">"/authentication/require"</span>)</span><br><span class="line">        .loginProcessingUrl(<span class="string">"/authentication/form"</span>)</span><br><span class="line">        .and()</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">        .antMatchers(<span class="string">"/mylogin.html"</span>).permitAll()</span><br><span class="line">        .antMatchers(<span class="string">"/authentication/require"</span>).permitAll()</span><br><span class="line">        .anyRequest().authenticated()</span><br><span class="line">        .and()</span><br><span class="line">        .csrf().disable();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="自定义登录成功-失败处理"><a href="#自定义登录成功-失败处理" class="headerlink" title="自定义登录成功/失败处理"></a>自定义登录成功/失败处理</h1><p>SpringSecurity为我们提供了两个接口：<strong>AuthenticationSuccessHandler</strong>，<strong>AuthenticationFailureHandler</strong>，这两个接口就是用来自定义成功和失败的逻辑</p>
+<p>分别来实现一下：</p>
+<p><strong>MyAuthenticationSuccessHandler.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"myAuthenticationSuccessHandler"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAuthenticationSuccessHandler</span> <span class="keyword">implements</span> <span class="title">AuthenticationSuccessHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationSuccess</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"登录成功"</span>);</span><br><span class="line">        httpServletResponse.setContentType(<span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(authentication));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>MyAuthenticationFailureHandler.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>(<span class="string">"myAuthenticationFailureHandler"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAuthenticationFailureHandler</span> <span class="keyword">implements</span> <span class="title">AuthenticationFailureHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationFailure</span><span class="params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"登录失败"</span>);</span><br><span class="line">        httpServletResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());</span><br><span class="line">        httpServletResponse.setContentType(<span class="string">"application/json;charset=UTF-8"</span>);</span><br><span class="line">        httpServletResponse.getWriter().write(objectMapper.writeValueAsString(e));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>最后在WebSecurityConfig中配置一下</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> AuthenticationSuccessHandler myAuthenticationSuccessHandler;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> AuthenticationFailureHandler myAuthenticationFailureHandler;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    http.formLogin()</span><br><span class="line">        .loginPage(<span class="string">"/authentication/require"</span>)</span><br><span class="line">        .loginProcessingUrl(<span class="string">"/authentication/form"</span>)</span><br><span class="line">        .successHandler(myAuthenticationSuccessHandler)</span><br><span class="line">        .failureHandler(myAuthenticationFailureHandler)</span><br><span class="line">        .and()</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">        .antMatchers(<span class="string">"/mylogin.html"</span>).permitAll()</span><br><span class="line">        .antMatchers(<span class="string">"/authentication/require"</span>).permitAll()</span><br><span class="line">        .anyRequest().authenticated()</span><br><span class="line">        .and()</span><br><span class="line">        .csrf().disable();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -515,9 +431,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/面试/" rel="tag"><i class="fa fa-tag"></i> 面试</a>
+            <a href="/tags/JAVA/" rel="tag"><i class="fa fa-tag"></i> JAVA</a>
           
-            <a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+            <a href="/tags/Spring/" rel="tag"><i class="fa fa-tag"></i> Spring</a>
+          
+            <a href="/tags/SpringSecurity/" rel="tag"><i class="fa fa-tag"></i> SpringSecurity</a>
           
         </div>
       
@@ -530,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/20/SpringDataJpa-自动生成分布式高效主键ID/" rel="next" title="SpringDataJpa-自动生成分布式高效主键ID">
-                <i class="fa fa-chevron-left"></i> SpringDataJpa-自动生成分布式高效主键ID
+              <a href="/2019/04/22/备战面试-Redis篇/" rel="next" title="备战面试-Redis篇">
+                <i class="fa fa-chevron-left"></i> 备战面试-Redis篇
               </a>
             
           </div>
@@ -540,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/23/重学SpringSecurity5 第四节：个性化用户认证流程/" rel="prev" title="重学SpringSecurity5（四）：个性化用户认证流程">
-                重学SpringSecurity5（四）：个性化用户认证流程 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/23/重学SpringSecurity5 第五节：认证流程原理/" rel="prev" title="重学SpringSecurity5（五）：认证流程原理">
+                重学SpringSecurity5（五）：认证流程原理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -677,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis简介"><span class="nav-number">1.</span> <span class="nav-text">Redis简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主流应用架构-缓存层"><span class="nav-number">1.1.</span> <span class="nav-text">主流应用架构(缓存层)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存中间件——Memcache和Redis的区别"><span class="nav-number">1.2.</span> <span class="nav-text">缓存中间件——Memcache和Redis的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Memcache：代码层次类似Hash"><span class="nav-number">1.2.1.</span> <span class="nav-text">Memcache：代码层次类似Hash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis"><span class="nav-number">1.2.2.</span> <span class="nav-text">Redis</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么Redis能这么快"><span class="nav-number">1.3.</span> <span class="nav-text">为什么Redis能这么快</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多路I-O复用模型"><span class="nav-number">1.4.</span> <span class="nav-text">多路I/O复用模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FD：File-Descriptor，文件描述符"><span class="nav-number">1.4.1.</span> <span class="nav-text">FD：File Descriptor，文件描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传统的阻塞I-O模型"><span class="nav-number">1.4.2.</span> <span class="nav-text">传统的阻塞I/O模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Select系统调用"><span class="nav-number">1.4.3.</span> <span class="nav-text">Select系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis采用的I-O多路复用函数"><span class="nav-number">1.4.4.</span> <span class="nav-text">Redis采用的I/O多路复用函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Redis常用数据类型"><span class="nav-number">2.</span> <span class="nav-text">Redis常用数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#供用户使用的数据类型"><span class="nav-number">2.1.</span> <span class="nav-text">供用户使用的数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#底层数据类型基础"><span class="nav-number">2.2.</span> <span class="nav-text">底层数据类型基础</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从海量key里查询出某一固定前缀的key"><span class="nav-number">3.</span> <span class="nav-text">从海量key里查询出某一固定前缀的key</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#留意细节"><span class="nav-number">3.1.</span> <span class="nav-text">留意细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量生成redis测试数据"><span class="nav-number">3.2.</span> <span class="nav-text">批量生成redis测试数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KEYS-pattern"><span class="nav-number">3.3.</span> <span class="nav-text">KEYS pattern</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCAN-cursor-MATCH-pattern-COUNT-count"><span class="nav-number">3.4.</span> <span class="nav-text">SCAN cursor [MATCH pattern] [COUNT count]</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何通过Redis实现分布式锁"><span class="nav-number">4.</span> <span class="nav-text">如何通过Redis实现分布式锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式锁需要解决的问题"><span class="nav-number">4.1.</span> <span class="nav-text">分布式锁需要解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何通过Redis实现"><span class="nav-number">4.2.</span> <span class="nav-text">如何通过Redis实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SETNX-key-value"><span class="nav-number">4.2.1.</span> <span class="nav-text">SETNX key value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何解决SETNX长期有效的问题"><span class="nav-number">4.2.2.</span> <span class="nav-text">如何解决SETNX长期有效的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EXPIRE-key-seconds（错误的解法）"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">EXPIRE key seconds（错误的解法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SET-key-value-EX-seconds-PX-milliseconds-NX-XX"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">SET key value [EX seconds] [PX milliseconds] [NX|XX]</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大量的key同时过期的注意事项"><span class="nav-number">4.2.3.</span> <span class="nav-text">大量的key同时过期的注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何使用Redis做异步队列"><span class="nav-number">5.</span> <span class="nav-text">如何使用Redis做异步队列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实现个性化登录页面"><span class="nav-number">1.</span> <span class="nav-text">实现个性化登录页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理不同类型的请求"><span class="nav-number">2.</span> <span class="nav-text">处理不同类型的请求</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能流程图"><span class="nav-number">2.1.</span> <span class="nav-text">功能流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.2.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义登录成功-失败处理"><span class="nav-number">3.</span> <span class="nav-text">自定义登录成功/失败处理</span></a></li></ol></div>
             
 
           </div>
