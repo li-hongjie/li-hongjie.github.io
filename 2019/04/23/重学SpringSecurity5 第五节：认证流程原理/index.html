@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="认证处理流程说明 UsernamePasswordAuthenticationFilter12345678910111213141516171819202122...public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws Authenti">
+<meta name="description" content="认证处理流程说明123 UsernamePasswordAuthenticationFilter12345678910111213141516171819202122...public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws Authe">
 <meta name="keywords" content="JAVA,Spring,SpringSecurity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重学SpringSecurity5（五）：认证流程原理">
 <meta property="og:url" content="http://yoursite.com/2019/04/23/重学SpringSecurity5 第五节：认证流程原理/index.html">
 <meta property="og:site_name" content="编程太有趣惹">
-<meta property="og:description" content="认证处理流程说明 UsernamePasswordAuthenticationFilter12345678910111213141516171819202122...public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws Authenti">
+<meta property="og:description" content="认证处理流程说明123 UsernamePasswordAuthenticationFilter12345678910111213141516171819202122...public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws Authe">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/重学SpringSecurity5%20第五节：认证流程原理/认证处理流程.png">
-<meta property="og:updated_time" content="2019-04-23T14:21:20.238Z">
+<meta property="og:updated_time" content="2019-04-24T11:07:41.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重学SpringSecurity5（五）：认证流程原理">
-<meta name="twitter:description" content="认证处理流程说明 UsernamePasswordAuthenticationFilter12345678910111213141516171819202122...public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws Authenti">
+<meta name="twitter:description" content="认证处理流程说明123 UsernamePasswordAuthenticationFilter12345678910111213141516171819202122...public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws Authe">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/23/重学SpringSecurity5%20第五节：认证流程原理/认证处理流程.png">
 
 
@@ -395,7 +395,7 @@
       
 
       
-        <h1 id="认证处理流程说明"><a href="#认证处理流程说明" class="headerlink" title="认证处理流程说明"></a>认证处理流程说明</h1><p><img src="/2019/04/23/重学SpringSecurity5 第五节：认证流程原理/认证处理流程.png" alt></p>
+        <h1 id="认证处理流程说明123"><a href="#认证处理流程说明123" class="headerlink" title="认证处理流程说明123"></a>认证处理流程说明123</h1><p><img src="/2019/04/23/重学SpringSecurity5 第五节：认证流程原理/认证处理流程.png" alt></p>
 <h2 id="UsernamePasswordAuthenticationFilter"><a href="#UsernamePasswordAuthenticationFilter" class="headerlink" title="UsernamePasswordAuthenticationFilter"></a>UsernamePasswordAuthenticationFilter</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">public</span> Authentication <span class="title">attemptAuthentication</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> AuthenticationException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.postOnly &amp;&amp; !request.getMethod().equals(<span class="string">"POST"</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AuthenticationServiceException(<span class="string">"Authentication method not supported: "</span> + request.getMethod());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        String username = <span class="keyword">this</span>.obtainUsername(request);</span><br><span class="line">        String password = <span class="keyword">this</span>.obtainPassword(request);</span><br><span class="line">        <span class="keyword">if</span> (username == <span class="keyword">null</span>) &#123;</span><br><span class="line">            username = <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (password == <span class="keyword">null</span>) &#123;</span><br><span class="line">            password = <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        username = username.trim();</span><br><span class="line">        UsernamePasswordAuthenticationToken authRequest = <span class="keyword">new</span> UsernamePasswordAuthenticationToken(username, password);</span><br><span class="line">        <span class="keyword">this</span>.setDetails(request, authRequest);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getAuthenticationManager().authenticate(authRequest);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>表单登录的第一步，首先进入该方法，该方法主要的逻辑为：</p>
 <ol>
@@ -607,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认证处理流程说明"><span class="nav-number">1.</span> <span class="nav-text">认证处理流程说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UsernamePasswordAuthenticationFilter"><span class="nav-number">1.1.</span> <span class="nav-text">UsernamePasswordAuthenticationFilter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UsernamePasswordAuthenticationToken"><span class="nav-number">1.1.1.</span> <span class="nav-text">UsernamePasswordAuthenticationToken</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AuthenticationManager"><span class="nav-number">1.2.</span> <span class="nav-text">AuthenticationManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AuthenticationProvider"><span class="nav-number">1.3.</span> <span class="nav-text">AuthenticationProvider</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#认证处理流程说明123"><span class="nav-number">1.</span> <span class="nav-text">认证处理流程说明123</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UsernamePasswordAuthenticationFilter"><span class="nav-number">1.1.</span> <span class="nav-text">UsernamePasswordAuthenticationFilter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UsernamePasswordAuthenticationToken"><span class="nav-number">1.1.1.</span> <span class="nav-text">UsernamePasswordAuthenticationToken</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AuthenticationManager"><span class="nav-number">1.2.</span> <span class="nav-text">AuthenticationManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AuthenticationProvider"><span class="nav-number">1.3.</span> <span class="nav-text">AuthenticationProvider</span></a></li></ol></li></ol></div>
             
 
           </div>
