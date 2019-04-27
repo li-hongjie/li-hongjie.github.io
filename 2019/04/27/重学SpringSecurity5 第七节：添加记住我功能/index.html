@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="记住我基本原理 TokenRepositorySpringSecurity为我们提供了两种实现方式  JdbcTokenRepositoryImpl 数据库 InMemoryTokenRepositoryImpl 内存  我们本次采用JdbcTokenRepositoryImpl来实现 RememberMeAuthenticationFilter">
+<meta name="description" content="记住我基本原理 TokenRepositorySpringSecurity为我们提供了两种实现方式  JdbcTokenRepositoryImpl 数据库 InMemoryTokenRepositoryImpl 内存  我们本次采用JdbcTokenRepositoryImpl来实现 123456@Beanpublic PersistentTokenRepository persistentTo">
 <meta name="keywords" content="JAVA,Spring,SpringSecurity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="重学SpringSecurity5 第七节：添加记住我功能">
 <meta property="og:url" content="http://yoursite.com/2019/04/27/重学SpringSecurity5 第七节：添加记住我功能/index.html">
 <meta property="og:site_name" content="编程太有趣惹">
-<meta property="og:description" content="记住我基本原理 TokenRepositorySpringSecurity为我们提供了两种实现方式  JdbcTokenRepositoryImpl 数据库 InMemoryTokenRepositoryImpl 内存  我们本次采用JdbcTokenRepositoryImpl来实现 RememberMeAuthenticationFilter">
+<meta property="og:description" content="记住我基本原理 TokenRepositorySpringSecurity为我们提供了两种实现方式  JdbcTokenRepositoryImpl 数据库 InMemoryTokenRepositoryImpl 内存  我们本次采用JdbcTokenRepositoryImpl来实现 123456@Beanpublic PersistentTokenRepository persistentTo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/04/27/重学SpringSecurity5%20第七节：添加记住我功能/记住我基本原理.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/27/重学SpringSecurity5%20第七节：添加记住我功能/SpringSecurity过滤器链.png">
-<meta property="og:updated_time" content="2019-04-27T08:20:42.562Z">
+<meta property="og:updated_time" content="2019-04-27T11:49:14.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重学SpringSecurity5 第七节：添加记住我功能">
-<meta name="twitter:description" content="记住我基本原理 TokenRepositorySpringSecurity为我们提供了两种实现方式  JdbcTokenRepositoryImpl 数据库 InMemoryTokenRepositoryImpl 内存  我们本次采用JdbcTokenRepositoryImpl来实现 RememberMeAuthenticationFilter">
+<meta name="twitter:description" content="记住我基本原理 TokenRepositorySpringSecurity为我们提供了两种实现方式  JdbcTokenRepositoryImpl 数据库 InMemoryTokenRepositoryImpl 内存  我们本次采用JdbcTokenRepositoryImpl来实现 123456@Beanpublic PersistentTokenRepository persistentTo">
 <meta name="twitter:image" content="http://yoursite.com/2019/04/27/重学SpringSecurity5%20第七节：添加记住我功能/记住我基本原理.png">
 
 
@@ -403,7 +403,10 @@
 <li><strong>InMemoryTokenRepositoryImpl</strong> 内存</li>
 </ul>
 <p>我们本次采用<strong>JdbcTokenRepositoryImpl</strong>来实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> PersistentTokenRepository <span class="title">persistentTokenRepository</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    JdbcTokenRepositoryImpl jdbcTokenRepository = <span class="keyword">new</span> JdbcTokenRepositoryImpl();</span><br><span class="line">    jdbcTokenRepository.setDataSource(dataSource);</span><br><span class="line">    <span class="keyword">return</span> jdbcTokenRepository;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="配置相关信息"><a href="#配置相关信息" class="headerlink" title="配置相关信息"></a>配置相关信息</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    ValidateCodeFilter validateCodeFilter = <span class="keyword">new</span> ValidateCodeFilter(myAuthenticationFailureHandler);</span><br><span class="line"></span><br><span class="line">    http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)</span><br><span class="line">        .formLogin()</span><br><span class="line">        .loginPage(<span class="string">"/authentication/require"</span>)</span><br><span class="line">        .loginProcessingUrl(<span class="string">"/authentication/form"</span>)</span><br><span class="line">        .successHandler(myAuthenticationSuccessHandler)</span><br><span class="line">        .failureHandler(myAuthenticationFailureHandler)</span><br><span class="line">        .and()</span><br><span class="line">        .authorizeRequests()</span><br><span class="line">        .antMatchers(</span><br><span class="line">        <span class="string">"/mylogin.html"</span>,</span><br><span class="line">        <span class="string">"/validate/imagecode"</span>,</span><br><span class="line">        <span class="string">"/authentication/require"</span>).permitAll()</span><br><span class="line">        .anyRequest().authenticated()</span><br><span class="line">        .and()</span><br><span class="line">        .csrf().disable()</span><br><span class="line">        .rememberMe()  <span class="comment">//开启rememberMe</span></span><br><span class="line">        .tokenRepository(persistentTokenRepository())  <span class="comment">//设置tokenRepository</span></span><br><span class="line">        .tokenValiditySeconds(<span class="number">60</span> * <span class="number">60</span>);  <span class="comment">//设置超时时间为1小时</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="RememberMeAuthenticationFilter"><a href="#RememberMeAuthenticationFilter" class="headerlink" title="RememberMeAuthenticationFilter"></a>RememberMeAuthenticationFilter</h1><p><img src="/2019/04/27/重学SpringSecurity5 第七节：添加记住我功能/SpringSecurity过滤器链.png" alt="SpringSecurity过滤器链"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -585,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记住我基本原理"><span class="nav-number">1.</span> <span class="nav-text">记住我基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TokenRepository"><span class="nav-number">2.</span> <span class="nav-text">TokenRepository</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RememberMeAuthenticationFilter"><span class="nav-number">3.</span> <span class="nav-text">RememberMeAuthenticationFilter</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#记住我基本原理"><span class="nav-number">1.</span> <span class="nav-text">记住我基本原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TokenRepository"><span class="nav-number">2.</span> <span class="nav-text">TokenRepository</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置相关信息"><span class="nav-number">3.</span> <span class="nav-text">配置相关信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RememberMeAuthenticationFilter"><span class="nav-number">4.</span> <span class="nav-text">RememberMeAuthenticationFilter</span></a></li></ol></div>
             
 
           </div>
